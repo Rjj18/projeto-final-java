@@ -20,6 +20,8 @@ public class Main {
 				System.out.println("1- Adicionar novo cliente.\n");
 				System.out.println("2- Remover um cliente.\n");
 				System.out.println("3- Listar todos os clientes:\n");
+				System.out.println("4- Consultar lista de contatos por nome:\n");
+				System.out.println("5- Consultar lista de contatos por cpf:\n");
 				
 				menu = scanner.nextInt();
 				
@@ -28,17 +30,26 @@ public class Main {
 					Contato contato = cadastrarContato(bancoDeDadosContatos.size());
 					bancoDeDadosContatos.add(contato);
 					break;
+				
 				case 2:
+					int id;
+					System.out.println("\nInforme o ID do usuario a ser removido: ");
+					id = scanner.nextInt();
+					bancoDeDadosContatos.remove(id - 1);
 					break;
 					
 				case 3:
 					imprimirContatos(bancoDeDadosContatos);
 					break;
+					
+				case 4:
+					
+				case 5:
+					
 				}
 				
 			} while (continua);
-		}
-		
+		}		
 		
 	}
 		private static void imprimirContatos(ArrayList<Contato> bancoDeDadosContatos) {
@@ -49,6 +60,7 @@ public class Main {
 			
 		}
 	}
+		
 		public static Contato cadastrarContato(int tamanhoLista) {
 			Scanner scanner = new Scanner(System.in);
 			

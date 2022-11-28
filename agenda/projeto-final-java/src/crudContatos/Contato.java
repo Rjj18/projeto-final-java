@@ -2,7 +2,7 @@ package crudContatos;
 
 public class Contato {
 	
-	private int id;
+	int id;
 	private String nome;
 	private String email;
 	private Endereco endereco;
