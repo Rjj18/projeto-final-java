@@ -10,33 +10,34 @@ public class Main {
 		
 		ArrayList<Contato> bancoDeDadosContatos = new ArrayList<Contato>();
 		
-		Scanner scanner = new Scanner(System.in);
-		Boolean continua = true;
-		int menu = 0;
-		
-		
-		do {
-			System.out.println("\n SELECIONE UMA OPCAO:\n");
-			System.out.println("1- Adicionar novo cliente.\n");
-			System.out.println("2- Remover um cliente.\n");
-			System.out.println("3- Listar todos os clientes:\n");
+		try (Scanner scanner = new Scanner(System.in)) {
+			Boolean continua = true;
+			int menu = 0;
 			
-			menu = scanner.nextInt();
 			
-			switch(menu) {
-			case 1:
-				Contato contato = cadastrarContato(bancoDeDadosContatos.size());
-				bancoDeDadosContatos.add(contato);
-				break;
-			case 2:
-				break;
+			do {
+				System.out.println("\n SELECIONE UMA OPCAO:\n");
+				System.out.println("1- Adicionar novo cliente.\n");
+				System.out.println("2- Remover um cliente.\n");
+				System.out.println("3- Listar todos os clientes:\n");
 				
-			case 3:
-				imprimirContatos(bancoDeDadosContatos);
-				break;
-			}
-			
-		} while (continua);
+				menu = scanner.nextInt();
+				
+				switch(menu) {
+				case 1:
+					Contato contato = cadastrarContato(bancoDeDadosContatos.size());
+					bancoDeDadosContatos.add(contato);
+					break;
+				case 2:
+					break;
+					
+				case 3:
+					imprimirContatos(bancoDeDadosContatos);
+					break;
+				}
+				
+			} while (continua);
+		}
 		
 		
 	}
@@ -50,10 +51,9 @@ public class Main {
 	}
 		public static Contato cadastrarContato(int tamanhoLista) {
 			Scanner scanner = new Scanner(System.in);
-			String numero, nome, email, rua, cidade, estado, dataNascimento;
 			
-			System.out.println("\n Digite o numero do contato:");
-			numero = scanner.nextLine();
+			String nome, email, rua, cidade, estado;
+			int numeroTelefone, dia, mes, ano, cpf;
 			
 			System.out.println("\n Digite o nome do contato:");
 			nome = scanner.nextLine();
@@ -70,15 +70,28 @@ public class Main {
 			System.out.println("\n Digite o estado do contato:");
 			estado = scanner.nextLine();
 			
-			System.out.println("\n Digite a data de nascimento do contato:");
-			dataNascimento = scanner.nextLine();
+			System.out.println("\n Digite o dia de nascimento do contato:");
+			dia = scanner.nextInt();
 			
+			System.out.println("\n Digite o mês de nascimento do contato:");
+			mes = scanner.nextInt();
+			
+			System.out.println("\n Digite o ano de nascimento do contato:");
+			ano = scanner.nextInt();
+			
+			System.out.println("\n Digite o CPF do contato:");
+			cpf = scanner.nextInt();
+			
+			System.out.println("\n Digite o número de telefone do contato:");
+			numeroTelefone = scanner.nextInt();
+	
 			Endereco endereco = new Endereco(rua, cidade, estado);
-			Contato contato = new Contato(tamanhoLista + 1, numero, nome, email, endereco, dataNascimento);
-			return contato;
 			
+			DataDeNascimento dataDeNascimento = new DataDeNascimento(dia, mes, ano);
 			
+			Contato contato = new Contato(tamanhoLista + 1, nome, email, endereco, dataDeNascimento, cpf, numeroTelefone);
 			
-			
+			return contato;			
+						
 		}
 }
