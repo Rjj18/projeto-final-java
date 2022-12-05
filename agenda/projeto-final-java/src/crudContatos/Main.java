@@ -43,6 +43,8 @@ public class Main {
 					break;
 					
 				case 4:
+				
+				System.out.println(buscaNome(bancoDeDadosContatos));
 					
 				case 5:
 					
@@ -57,9 +59,9 @@ public class Main {
 		
 		for (Contato contato: bancoDeDadosContatos) {
 			System.out.println(contato.toString());
-			
+			}
 		}
-	}
+		
 		
 		public static Contato cadastrarContato(int tamanhoLista) {
 			Scanner scanner = new Scanner(System.in);
@@ -106,4 +108,21 @@ public class Main {
 			return contato;			
 						
 		}
+		public static Contato buscaNome (ArrayList<Contato> bancoDeDadosContatos) {
+			
+			Scanner scanner = new Scanner(System.in);
+			String nomeInformado;
+		
+			for(Contato contato: bancoDeDadosContatos) {
+				
+				System.out.println("\n Digite o nome do contato:");
+				nomeInformado = scanner.nextLine();
+				 
+				if (contato.getNome().equals(nomeInformado)) {
+					
+					return contato; }
+			}
+			return null;
+		}
+		
 }

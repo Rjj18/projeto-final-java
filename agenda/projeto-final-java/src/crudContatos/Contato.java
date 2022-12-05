@@ -1,5 +1,7 @@
 package crudContatos;
 
+import java.util.Objects;
+
 public class Contato {
 	
 	int id;
@@ -21,8 +23,18 @@ public class Contato {
 		this.numeroTelefone = numeroTelefone;
 	}
 	
+	public String getNome () {	
+		return nome;
+	}
+	
+	public int getCpf () {
+		
+		return cpf;
+	}
+		
+	
 	@Override
 	public String toString() {
 		return "\n ID DO CONTATO" + id + "\n NOME DO CONTATO:" + nome + "\n CPF DO CONTATO: " + cpf + "\n EMAIL DO CONTATO: " + email + "\n ENDERECO DO CONTATO: " + endereco.toString() + "\n DATA DE NASCIMENTO DO CONTATO: " + dataDeNascimento.toString() + "\n CPF DO CONTATO: " + cpf + "\n TELEFONE DO CONTATO: " + numeroTelefone; 
-	}
+		}
 }
